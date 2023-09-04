@@ -1,0 +1,244 @@
+/* ---- CSS RESETS ---- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+#root, #__next {
+    isolation: isolate;
+}
+.attribution {
+    display: none;
+}
+
+/* ------- COLORS --------- */
+:root {
+    --tomato: hsl(4, 100%, 67%);
+    --dark-slate-gray: hsl(234, 29%, 20%);
+    --charcoal: hsl(235, 18%, 26%);
+    --gray: hsl(231, 5%, 70%);
+    --white: hsl(0, 0%, 100%);
+}
+
+/* ------- TYPOGRAPHY -------- */
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+body{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--charcoal)
+}
+li {
+    list-style: none;
+    display: inline-grid;
+    column-gap: 5%;
+    width: 95%;
+    justify-content: start;
+    padding: 8px 0;
+}
+
+/* -------- LAYOUT - SUBSCRIBE --------- */
+.main-img img{
+    margin: auto;
+    width: 100%;
+}
+.main-body {
+    display: grid;
+    grid-template-columns: [first] 7% [line2] 10% [line3] auto [col4-start] 10% [five] 5% [end];
+    grid-template-rows: [row1-start] 100px [row1-end] 1fr [third-line] auto [last-line];
+}
+h1, .text-block, .subscribe-block, .success-icon, .dismiss-button {
+    grid-column: 2 / 5;
+}
+
+/* TEXT BLOCK */
+h1 {
+    grid-row: 1 / 2;
+    align-self: center;
+    font-size: 4.2rem;
+    padding-top: 20px;
+    line-height: 1.1;
+}
+.text-block {
+    grid-row: 2 / 3;
+    font-weight: 400;
+}
+.text-block > p, ul {
+    padding-bottom: 15px;
+}
+li img {
+    padding-top: 1px;
+}
+.list-item-text {
+    grid-column: 2/3;
+}
+
+/* SUBSCRIBE BLOCK */
+.subscribe-block, .dismiss-button {
+    grid-row: 3 / 4;
+    margin-right: 2%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+form {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+}
+label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--dark-slate-gray);
+    display: inline-flex;
+    justify-content: space-between;
+}
+#invalid-email {
+    color: var(--tomato);
+}
+#email {
+    border: solid 1px var(--gray);
+    border-radius: 5px;
+    padding: 14px 20px;
+    color: var(--gray);
+    margin-top: 5px;
+}
+button {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--dark-slate-gray);
+    color: var(--white);
+    font-weight: 500;
+    margin-top: 20px;
+}
+.hidden {
+    display: none;
+}
+/* -------- LAYOUT - SUCCESS --------- */
+.mobile-success-display {
+    padding-top: 40%;
+}
+.success-icon {
+    padding-left: 7%;
+}
+.mobile-success-display .main-body {
+    padding-top: 24px;
+}
+.mobile-success-display p {
+    padding-top: 25px;
+}
+.email-link {
+    font-weight: 600;
+}
+.dismiss-button {
+    margin-top: 70%;
+}
+
+/* ------- MEDIA QUERIES -------- */
+/* desktop break = 1440px, mobile break = 375px */
+@media only screen and (max-width: 500px) {
+    .mobile-success-display {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    
+    body {
+        background-color: var(--charcoal);
+    }
+    .desktop-subscribe-display {
+        display: grid;
+        grid-template-columns: [first] 1% [line2] 1fr [line3] 43% [line4] auto [line5];
+        align-items: center;
+        grid-template-rows: [row1] 1fr [row-end];
+        margin: 15%;
+        background-color: var(--white);
+        border-radius: 32px;
+        box-shadow: 10px 10px 10px var(--dark-slate-gray);
+        width: 875px;
+        height: 625px;
+        column-gap: 30px;
+    }
+    .main-img {
+        grid-column: 3 / 4;
+        overflow: hidden;
+        border-radius: 15px;
+        height: 570px;
+    }
+    .main-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .main-body {
+        grid-column: 2 / 3; 
+        grid-row: 1 / 2;
+
+    }
+    h1{
+        font-size: 5rem;
+    }
+    .text-block {
+        display: block;
+        font-size: 1.5rem;
+    }
+    button:hover {
+        cursor: pointer;
+        background: linear-gradient(.25turn, rgb(212, 59, 161), var(--tomato) 60%) ;
+    }
+    button:active {
+        box-shadow: inset 1px 1px 6px var(--charcoal);
+    }
+
+    /* SUCCESS */
+    
+    .mobile-success-display {
+        width: 450px;
+        height: auto;
+        margin: 25% auto;
+        background-color: var(--white);
+        padding: 50px 30px 25px 30px;
+        border-radius: 25px;
+        box-shadow: 10px 10px 10px var(--dark-slate-gray);
+    }
+    .success-icon {
+        padding-left: 7%;
+        width: 85px;
+    }
+    .mobile-success-display .main-body {
+        padding-top: 25px;;
+    }
+    .mobile-success-display p {
+        padding-top: 35px;
+        width: 100%;
+    }
+    .email-link {
+        font-weight: 600;
+    }
+    .dismiss-button {
+        margin-top: 0%;
+        width: 100%;
+    }
+
+    .mobile-success-display {
+        display: none;
+    }
+}
